@@ -1,12 +1,15 @@
 package com.example.practice;
 
+import com.example.practice.problems.Fibonacci;
 import com.example.practice.sort.HeapSort;
 import com.example.util.Util;
 
 public class Driver {
 
     public static void main(String[] args) {
-        KMP.match("aaa","aaaaaaaaaaaaa");
+        for(int i=0;i<100;i++){
+            Fibonacci.get(i);
+        }
     }
 
     private static int[] getArray(){
