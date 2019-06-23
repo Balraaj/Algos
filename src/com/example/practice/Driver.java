@@ -1,5 +1,6 @@
 package com.example.practice;
 
+import com.example.practice.problems.Binomial;
 import com.example.practice.problems.Fibonacci;
 import com.example.practice.sort.HeapSort;
 import com.example.util.Util;
@@ -8,7 +9,9 @@ public class Driver {
 
     public static void main(String[] args) {
         for(int i=0;i<100;i++){
-            Fibonacci.get(i);
+            for(int j=0;j<=i;j++){
+                Binomial.getNCR(i,j);
+            }
         }
     }
 

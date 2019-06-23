@@ -52,6 +52,9 @@ public class Fibonacci {
         return terms[n];
     }
 
+    /**
+     * Set up the array to be used by dynamic solution.
+     */
     private static long[] terms = new long[200];
     static{
         terms[0] = 0;
