@@ -47,7 +47,7 @@ public class Fibonacci {
      */
     private static long fibDynamic(int n){
         if(terms[n]==-1){
-            terms[n] = terms[n-1] + terms[n-2];
+            terms[n] = fibDynamic(n-1) + fibDynamic(n-2);
         }
         return terms[n];
     }
@@ -60,5 +60,9 @@ public class Fibonacci {
         terms[0] = 0;
         terms[1] = 1;
         for(int i=2;i<200;i++) terms[i] = -1;
+    }
+
+    public static void main(String[] args){
+       get(10);
     }
 }
