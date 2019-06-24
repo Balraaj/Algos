@@ -58,7 +58,7 @@ public class Binomial {
     }
 
     public static void getNCR(int n, int r){
-        long value = recursive(n,r);
+        long value = dynamic(n,r);
         System.out.println(n+"C"+r+" is : "+value);
     }
 }
