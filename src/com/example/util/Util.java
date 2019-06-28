@@ -1,5 +1,7 @@
 package com.example.util;
 
+import com.example.practice.problems.LinkedList;
+
 public class Util {
 
     public static void swap(int[] array, int firstPosition, int secondPosition){
