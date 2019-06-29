@@ -220,6 +220,40 @@ public class LinkedList {
         }
     }
 
+    /*
+     Given two linked lists where each list stores a number.
+     this method return a new linked list which stores sum of both the lists.
+     */
+    private static LinkedList add(LinkedList l1, LinkedList l2){
+        int firstNumber = 0;
+        int secondNumber = 0;
+        Node runner1 = l1.head;
+        Node runner2 = l2.head;
+        while((runner1!=null)||(runner2!=null)){
+            if(runner1!=null){
+                firstNumber = firstNumber*10+runner1.getValue();
+                runner1 = runner1.getNext();
+            }
+            if(runner2!=null){
+                secondNumber = secondNumber*10+runner2.getValue();
+                runner2 = runner2.getNext();
+            }
+        }
+
+        int newNumber = firstNumber+secondNumber;
+        LinkedList newList = new LinkedList();
+        newList.head = addHelper(null,newNumber);
+        return newList;
+    }
+
+
+    private static Node addHelper(Node node, int value){
+        if(value == 0) return node;
+
+        Node newNode = new Node(value%10);
+        newNode.setNext(node);
+        return addHelper(newNode,value/10);
+    }
     public static void main(String[] args){
 
         /* Testing for kth to last element method */
@@ -239,10 +273,13 @@ public class LinkedList {
 //        System.out.print("\nList after removal : ");
 //        printLinkedList(myList);
 
-        LinkedList myList = getSinglyUnsortedListWithDuplicates(13,123,34,5,12,3,123,123,56,4,123,90,56,34,56,12,6,5,34,23);
-        partitionQuickSortStyle(myList,57);
-        printLinkedList(myList);
+        // Test for partition method
+//        LinkedList myList = getSinglyUnsortedListWithDuplicates(13,123,34,5,12,3,123,123,56,4,123,90,56,34,56,12,6,5,34,23);
+//        partitionQuickSortStyle(myList,57);
+//        printLinkedList(myList);
 
+        LinkedList newList = add(getSinglyUnsortedListWithDuplicates(1,2,3,4),getSinglyUnsortedListWithDuplicates(0,0));
+        printLinkedList(newList);
     }
 }
 
