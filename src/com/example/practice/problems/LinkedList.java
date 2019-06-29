@@ -103,6 +103,32 @@ public class LinkedList {
         mid.setNext(null);
     }
 
+    /** This method partitions the linked list around the pivot value.
+     *
+     */
+    private static void partitionQuickSortStyle(LinkedList list, int pivot){
+        Node runner = list.head;
+        Node maxNode = list.head;
+        while(runner!=null) {
+            if (runner.getValue() < pivot) {
+                int temp = runner.getValue();
+                runner.setValue(maxNode.getValue());
+                maxNode.setValue(temp);
+                maxNode = maxNode.getNext();
+            }
+            runner = runner.getNext();
+        }
+    }
+
+    private static Node getNodeWithValue(LinkedList list, int value){
+        Node runner = list.head;
+        while(runner!=null){
+            if(runner.getValue()==value) return runner;
+            runner = runner.getNext();
+        }
+        return null;
+    }
+
     private static boolean isPalindrome(LinkedList list){
         Node secondPart = getMiddle(list).getNext();
         Node firstPart = list.head;
@@ -201,15 +227,20 @@ public class LinkedList {
 //        for(int i=0; i<5;i++){
 //            System.out.println(i+"th from last is : "+getKthToLast(myList,i).getValue());
 //        }
+//
+        /* Testing for middle element removal */
+//        LinkedList myList = getSinglyUnsortedListWithDuplicates(1,2,3,4,5,6);
+//        System.out.print("List before removal : ");
+//        printLinkedList(myList);
+//        Node midNode = getMiddle(myList);
+//        removeMid(myList);
+//        midNode = getNode(myList,midNode);
+//        System.out.print("mid exists : "+((midNode==null)? "No":midNode.getValue()));
+//        System.out.print("\nList after removal : ");
+//        printLinkedList(myList);
 
-        LinkedList myList = getSinglyUnsortedListWithDuplicates(1,2,3,4,5,6);
-        System.out.print("List before removal : ");
-        printLinkedList(myList);
-        Node midNode = getMiddle(myList);
-        removeMid(myList);
-        midNode = getNode(myList,midNode);
-        System.out.print("mid exists : "+((midNode==null)? "No":midNode.getValue()));
-        System.out.print("\nList after removal : ");
+        LinkedList myList = getSinglyUnsortedListWithDuplicates(13,123,34,5,12,3,123,123,56,4,123,90,56,34,56,12,6,5,34,23);
+        partitionQuickSortStyle(myList,57);
         printLinkedList(myList);
 
     }
