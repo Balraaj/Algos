@@ -74,6 +74,34 @@ public class LinkedList {
         return kth;
     }
 
+    /**
+     * Given a singly linked list this method removes the middle node.
+     * middle node is only defined if the list contains more then 2 elements.
+     * Note : This method doesn't remove the exact middle node,
+     * in fact it copies the data from next node into current node and then removes the next node.
+     */
+    private static void removeMid(LinkedList list){
+        Node middle = getMiddle(list);
+        middle.setValue(middle.getNext().getValue());
+        middle.setNext(middle.getNext().getNext());
+    }
+
+    /**
+     * Unlike the above method this method removes the exact middle node.
+     * That is middle value as well as the Node in which it was stored.
+     * @param list
+     */
+    private static void removeExactMid(LinkedList list){
+        Node runner, mid, prevMid;
+        runner = mid = prevMid = list.head;
+        while((runner!=null) && (runner.getNext()!=null)){
+            runner = runner.getNext().getNext();
+            prevMid = mid;
+            mid = mid.getNext();
+        }
+        prevMid.setNext(mid.getNext());
+        mid.setNext(null);
+    }
 
     private static boolean isPalindrome(LinkedList list){
         Node secondPart = getMiddle(list).getNext();
@@ -135,9 +163,9 @@ public class LinkedList {
         return list;
     }
 
-    private static LinkedList getSinglyUnsortedListWithDuplicates(){
+    private static LinkedList getSinglyUnsortedListWithDuplicates(int... args){
         Random random = new Random();
-        int[] randomNumbers = {123,1,1,1,4,-123,-45,23,1,1,0,56,1,123,0,132,456,1};
+        int[] randomNumbers = (args.length==0)?new int[]{123,1,1,1,4,-123,-45,23,1,1,0,56,1,123,0,132,456,1}:args;
         LinkedList list = new LinkedList();
         list.head = new Node(randomNumbers[0]);
         Node currentNode = list.head;
@@ -149,6 +177,15 @@ public class LinkedList {
         return list;
     }
 
+    private static Node getNode(LinkedList list, Node node){
+        Node runner = list.head;
+        while(runner!=null){
+            if(runner == node ) return runner;
+            runner = runner.getNext();
+        }
+        return null;
+    }
+
     public static void printLinkedList(LinkedList list){
         Node currentNode = list.head;
         while(currentNode!=null){
@@ -158,10 +195,23 @@ public class LinkedList {
     }
 
     public static void main(String[] args){
-        LinkedList myList = getPalindromeList();
-        for(int i=0; i<5;i++){
-            System.out.println(i+"th from last is : "+getKthToLast(myList,i).getValue());
-        }
+
+        /* Testing for kth to last element method */
+//        LinkedList myList = getPalindromeList();
+//        for(int i=0; i<5;i++){
+//            System.out.println(i+"th from last is : "+getKthToLast(myList,i).getValue());
+//        }
+
+        LinkedList myList = getSinglyUnsortedListWithDuplicates(1,2,3,4,5,6);
+        System.out.print("List before removal : ");
+        printLinkedList(myList);
+        Node midNode = getMiddle(myList);
+        removeMid(myList);
+        midNode = getNode(myList,midNode);
+        System.out.print("mid exists : "+((midNode==null)? "No":midNode.getValue()));
+        System.out.print("\nList after removal : ");
+        printLinkedList(myList);
+
     }
 }
 
