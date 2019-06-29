@@ -56,10 +56,88 @@ public class LinkedList {
         }
     }
 
+    /** Given a linked list and an integer k,
+     *  this method returns kth to last element.
+     */
+    private static Node getKthToLast(LinkedList list, int k){
+        Node start = list.head;
+        Node kth = list.head;
+        int difference = 0;
+        while(difference<k) {
+            difference++;
+            start = start.getNext();
+        }
+        while(start.getNext()!=null){
+            kth = kth.getNext();
+            start = start.getNext();
+        }
+        return kth;
+    }
+
+
+    private static boolean isPalindrome(LinkedList list){
+        Node secondPart = getMiddle(list).getNext();
+        Node firstPart = list.head;
+
+        while(secondPart!=null){
+            if(firstPart.getValue()!=secondPart.getValue()) return false;
+
+            firstPart = firstPart.getNext();
+            secondPart = secondPart.getNext();
+        }
+        return true;
+    }
+
+    private static Node getMiddle(LinkedList list){
+        int count = 1;
+        Node middleNode = list.head;
+        Node currentNode = list.head;
+        while(currentNode!=null){
+            count++;
+            if(count%2==1){
+                middleNode = middleNode.getNext();
+            }
+            currentNode = currentNode.getNext();
+        }
+        return middleNode;
+    }
+
+    private static void getReversedList(LinkedList list){
+         reverse(list, list.head, list.head.getNext(),list.head);
+
+    }
+
+    private static void reverse(LinkedList list, Node previous, Node current, Node oldHead){
+        if(current.getNext()==null){
+            list.head = current;
+            current.setNext(previous);
+            return;
+        }
+        reverse(list,current,current.getNext(),oldHead);
+        current.setNext(previous);
+        if(previous==oldHead){
+            previous.setNext(null);
+        }
+        return;
+    }
+
+    private static LinkedList getPalindromeList(){
+        Random random = new Random();
+        int[] randomNumbers = {123,1,3,4,8,4,3,1,123};
+        LinkedList list = new LinkedList();
+        list.head = new Node(randomNumbers[0]);
+        Node currentNode = list.head;
+        for(int i=1;i<randomNumbers.length;i++){
+            currentNode.setNext(new Node(randomNumbers[i]));
+            currentNode = currentNode.getNext();
+        }
+        currentNode.setNext(null);
+        return list;
+    }
 
     private static LinkedList getSinglyUnsortedListWithDuplicates(){
         Random random = new Random();
-        int[] randomNumbers = {123,1,1,1,4,-123,-45,23,1,1,0,56,1,123,0,132,456,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
+        int[] randomNumbers = {123,1,1,1,4,-123,-45,23,1,1,0,56,1,123,0,132,456,1};
         LinkedList list = new LinkedList();
         list.head = new Node(randomNumbers[0]);
         Node currentNode = list.head;
@@ -80,12 +158,10 @@ public class LinkedList {
     }
 
     public static void main(String[] args){
-        LinkedList myList = getSinglyUnsortedListWithDuplicates();
-        System.out.println("List before duplicate removal");
-        printLinkedList(myList);
-        removeDuplicatesWithoutBuffer(myList);
-        System.out.println("\nList after duplicate removal");
-        printLinkedList(myList);
+        LinkedList myList = getPalindromeList();
+        for(int i=0; i<5;i++){
+            System.out.println(i+"th from last is : "+getKthToLast(myList,i).getValue());
+        }
     }
 }
 
