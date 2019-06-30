@@ -27,6 +27,10 @@ public class LinkedListAddition {
             node.next = add(l1Next,l2Next,value/10);
             return node;
         }
+
+        public static void main(String[] args){
+
+        }
 }
 
 
