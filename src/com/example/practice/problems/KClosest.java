@@ -3,7 +3,17 @@ package com.example.practice.problems;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * Given a list of sorted elements and two integers named value and k.
+ * this program finds the k closest elements to the value.
+ * value may or may not exist in the sorted list.
+ */
 public class KClosest {
+
+    /**
+     * As list is sorted we can use binary search to find the closest element.
+     */
     private static int getClosest(int[] array, int value){
         if(value<array[0]) return 0;
         if(value>array[array.length-1]) return array.length-1;
@@ -59,6 +69,6 @@ public class KClosest {
 
     public static void main(String[] args){
         int[] array = {1,2,3,4,5,6,7,8,9,10,14};
-        System.out.print(getKClosest(array,0,3));
+        System.out.print(getKClosest(array,0,1));
     }
 }
