@@ -16,6 +16,12 @@ public class Util {
         }
     }
 
+    public static void printArray(int[] array, int length){
+        for(int i=0;i<length;i++){
+            System.out.print(array[i]+" ");
+        }
+    }
+
     public static void print2dArray(int[][] array){
         int n = array.length;
         int m = array[0].length;
