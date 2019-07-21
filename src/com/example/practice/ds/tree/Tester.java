@@ -7,10 +7,22 @@ import java.util.List;
 public class Tester {
 
     public static void main(String[] args){
-        BinaryTree<Integer> bt = BinaryTree.buildAlmostCompleteBinaryTree(new ArrayList<>(Arrays.asList(1,2,3,4,5,6,7,8,9,10)));
-        List<Integer> seq = bt.getLevelOrder();
-        for(int i : seq){
-            System.out.print(" "+i);
-        }
+        BinaryTree<Integer> bt = new BinaryTree<>(12);
+
+        List<Integer> inorder = bt.traverse(BinaryTree.TRAVERSAL_IN_ORDER);
+        System.out.print("\nInorder traversal is    ");
+        System.out.print(inorder);
+
+        List<Integer> preorder = bt.traverse(BinaryTree.TRAVERSAL_PRE_ORDER);
+        System.out.print("\nPreorder traversal is   ");
+        System.out.print(preorder);
+
+        List<Integer> postorder = bt.traverse(BinaryTree.TRAVERSAL_POST_ORDER);
+        System.out.print("\nPostorder traversal is  ");
+        System.out.print(postorder);
+
+        List<Integer> levelorder = bt.traverse(BinaryTree.TRAVERSAL_LEVEL_ORDER);
+        System.out.print("\nLevelorder traversal is ");
+        System.out.print(levelorder);
     }
 }
