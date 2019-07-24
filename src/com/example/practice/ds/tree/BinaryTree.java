@@ -3,6 +3,7 @@ package com.example.practice.ds.tree;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * A binary tree implementation in java
@@ -113,6 +114,31 @@ public class BinaryTree<T> {
             nodes.add(currentNode.rightChild);
         }
         traverseLevelorder(sequence,nodes);
+    }
+
+    public static void buildInteractive(BinaryTree<Integer> tree){
+        List<Node<Integer>> queue = new ArrayList<>();
+        queue.add(tree.root);
+        while(!queue.isEmpty()){
+            Node<Integer> currentNode = queue.remove(0);
+            System.out.print("\nEnter left child --- : ");
+            currentNode.leftChild = getChild(currentNode);
+            System.out.print("\nEnter right child --- : ");
+            currentNode.rightChild = getChild(currentNode);
+            if(currentNode.leftChild!=null) queue.add(currentNode.leftChild);
+            if(currentNode.rightChild!=null) queue.add(currentNode.rightChild);
+        }
+    }
+
+    private static Node<Integer> getChild(Node<Integer> parent){
+        Scanner sc = new Scanner(System.in);
+        int value = sc.nextInt();
+        if(value!=-786){
+            return new Node<>(value, parent, null, null);
+        }
+        else{
+            return null;
+        }
     }
 
 
