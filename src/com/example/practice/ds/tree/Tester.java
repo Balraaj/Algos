@@ -2,6 +2,7 @@ package com.example.practice.ds.tree;
 
 import com.example.util.BeanUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Tester {
@@ -27,24 +28,40 @@ public class Tester {
 //        List<Integer> postorder = bt.traverse(BinaryTree.TRAVERSAL_POST_ORDER);
 //        System.out.print("\nPostorder traversal is  ");
 //        System.out.print(postorder);
+//
+//        Class<?> testerClass = Tester.class;
+//        System.out.println("\nClass loader of Tester is : "+Tester.class.getClassLoader());
+//
+//        Integer n = 123;
+//        Class<?> intClass = n.getClass();
+//        System.out.println("Class loader of Integer is : "+Integer.class.getClassLoader());
+//
+//        Class<?> listClass = List.class;
+//        System.out.println("Class loader of List is : "+List.class.getClassLoader());
+//
+//        A a = new A(123, "Hello");
+//        B b = BeanUtils.copy(a, B.class);
+//
+//        System.out.println(b);
+//
+//        a.b.append(" This is new");
+//        System.out.println("\nAfter modifying A :"+b.toString());
 
-        Class<?> testerClass = Tester.class;
-        System.out.println("\nClass loader of Tester is : "+Tester.class.getClassLoader());
+        ArrayList<String> strings = new ArrayList<>();
+        strings.add("Hello");
+        strings.add("World");
+        strings.add("What");
+        strings.add("is");
+        strings.add("life");
+//        for(String s: strings){
+//            System.out.println(s);
+//            strings.remove(0);
+//        }
+        for(int i=0;i<strings.size();i++){
 
-        Integer n = 123;
-        Class<?> intClass = n.getClass();
-        System.out.println("Class loader of Integer is : "+Integer.class.getClassLoader());
-
-        Class<?> listClass = List.class;
-        System.out.println("Class loader of List is : "+List.class.getClassLoader());
-
-        A a = new A(123, "Hello");
-        B b = BeanUtils.copy(a, B.class);
-
-        System.out.println(b);
-
-        a.b.append(" This is new");
-        System.out.println("\nAfter modifying A :"+b.toString());
+            //System.out.println(strings.get(i));
+            strings.remove(i);
+        }
     }
 }
 
