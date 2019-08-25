@@ -11,6 +11,7 @@ public class JavaHashing {
         testNoHash();
         testWithHash();
         testMutableKeyProblem();
+
     }
 
     private static void testWithHash(){
