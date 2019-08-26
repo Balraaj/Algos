@@ -1,7 +1,6 @@
 package com.epi.problems
 
-class BitManipulator{
-companion object {
+object BitManipulator{
 
     /**
      * Brute force approach, iterates over all the bits
@@ -41,5 +40,32 @@ companion object {
         }
         return setBits
     }
-}
+
+    /**
+     * This method calculates the parity of given integer
+     * by iterating over all the bits
+     */
+    fun calculateParitySlow(value: Int): Int{
+        var number = value
+        var parity = 0
+        while(number != 0){
+            parity = parity.xor(number and 1)
+            number = number.ushr(1)
+        }
+        return parity
+    }
+
+    /**
+     * A fast method to calculate the parity then plain brute force approach.
+     * it only iterates k number of times where k is the number of set bits.
+     */
+    fun calculateParityFast(value: Int): Int{
+        var number = value
+        var parity = 0
+        while(number != 0){
+            parity = parity.xor(1)
+            number = number.xor(number and (number -1).inv())
+        }
+        return parity
+    }
 }

@@ -17,12 +17,28 @@ class Runner{
         var testValue = 0
         while(testValue < 129){
             var setBits = BitManipulator.calculateSetBits(testValue)
-            print("\nNo. of bits set for decimal value $testValue: $setBits")
+            var parity = BitManipulator.calculateParityFast(testValue)
+            print("\n(Set bits, parity) for $testValue: $setBits, $parity")
             testValue++
         }
+    }
+
+    fun tester(){
+        print("All tests passed: ${testParityCheckers()}")
+    }
+
+    fun testParityCheckers(): Boolean{
+        var testValue = 0
+        while(testValue < 129){
+            var pSlow = BitManipulator.calculateParitySlow(testValue)
+            var pFast = BitManipulator.calculateParityFast(testValue)
+            if(pSlow != pFast) return false
+            testValue++
+        }
+        return true
     }
 }
 
 fun main(){
-    Runner().runBitCalculatorTest()
+    Runner().tester()
 }
