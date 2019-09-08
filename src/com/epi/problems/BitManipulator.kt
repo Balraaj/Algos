@@ -68,4 +68,16 @@ object BitManipulator{
         }
         return parity
     }
+
+    /**
+     * This method swaps two bits a number given by x and y.
+     * we observe that swapping is only required if both the bits differ.
+     */
+    fun swapBits(number: Long, x: Int, y: Int): Long{
+        if(((number shr x) and 1) != ((number shr y) and 1)){
+            var bitMask = (1L shl x) or (1L shl y)
+            return number.xor(bitMask)
+        }
+        return number
+    }
 }

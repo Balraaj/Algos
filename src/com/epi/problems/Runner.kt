@@ -40,5 +40,5 @@ class Runner{
 }
 
 fun main(){
-    Runner().tester()
+    print(BitManipulator.swapBits(16, 4, 1))
 }
