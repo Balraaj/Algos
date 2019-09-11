@@ -23,4 +23,31 @@ public class ProblemSolver {
         }
     }
 
+    /**
+     * Rearranges the given array such that all the elements less then array[pivot]
+     * come first followed by all the elements equal to array[pivot] and then
+     * all the elements greater then array[pivot]
+     * @param array
+     * @param pivot
+     */
+    public static void dutchFlag(int[] array, int pivot){
+        int swapCandidate = 0;
+        int pivotValue = array[pivot];
+        while(array[swapCandidate]<pivotValue) swapCandidate++;
+
+        for(int i=swapCandidate; i<array.length; i++){
+            if(array[i] < pivotValue){
+                Util.swap(array, i , swapCandidate);
+                swapCandidate++;
+            }
+        }
+
+        for(int i=swapCandidate; i<array.length; i++){
+            if(array[i] == pivotValue){
+                Util.swap(array, i, swapCandidate);
+                swapCandidate++;
+            }
+        }
+    }
+
 }
