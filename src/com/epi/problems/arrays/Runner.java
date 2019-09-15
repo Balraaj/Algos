@@ -4,8 +4,8 @@ import com.example.util.Util;
 
 public class Runner {
     public static void main(String[] args){
-        int[] array = {67,12,34,14,89,2,25,87,-12,45,0,25};
-        ProblemSolver.dutchFlag(array, array.length-1);
+        int[] array = {1,2,3,3,2,1,1,2,3,3,2,1,3,3,1,1,2,2};
+        ProblemSolver.dutchFlagSinglePass(array, 2);
         Util.printArray(array);
     }
 }

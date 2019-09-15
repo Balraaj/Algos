@@ -50,4 +50,30 @@ public class ProblemSolver {
         }
     }
 
+    /**
+     * This method solves the dutchFlag problem in a single pass.
+     * to solve the problem we divide the array into 4 sections.
+     * and maintain counters smaller, equal and larger to mark the
+     * boundaries of these sections.
+     * @param array
+     * @param pivot
+     */
+    public static void dutchFlagSinglePass(int[] array, int pivot){
+        int equal = 0;
+        int smaller = 0;
+        int larger = array.length-1;
+
+        while(equal <= larger){
+            if(array[equal] < pivot){
+                Util.swap(array, equal++, smaller++);
+            }
+            else if(array[equal] == pivot){
+                equal++;
+            }
+            else{
+                Util.swap(array, equal, larger--);
+            }
+        }
+    }
+
 }
