@@ -2,6 +2,8 @@ package com.epi.problems.arrays;
 
 import com.example.util.Util;
 
+import java.util.List;
+
 /**
  * A utility class for the solutions of problems
  * which doesn't warrant an individual class
@@ -73,6 +75,52 @@ public class ProblemSolver {
             else{
                 Util.swap(array, equal, larger--);
             }
+        }
+    }
+
+    /**
+     * Given an array of ints representing an integer,
+     * this method increments that integer by one.
+     * performing all operation directly on the array.
+     * @param integer
+     * @return
+     */
+    public static int[] incrementInteger(int[] integer){
+        int carry = (integer[integer.length-1] + 1) / 10;
+        integer[integer.length-1] = (integer[integer.length-1] + 1) % 10;
+
+        int index = integer.length -2;
+        while(index >= 0 && carry != 0){
+            carry = (integer[index] + 1) / 10;
+            integer[index] = (integer[index] + 1) % 10;
+            index--;
+        }
+
+        if(carry==1){
+            int[] newArray = new int[integer.length+1];
+            newArray[0] = 1;
+            int i = 1;
+            for(int number : integer) newArray[i++] = number;
+            return newArray;
+        }
+        return integer;
+    }
+
+    /**
+     * This method implements the above algorithm in a better way.
+     * @param integer
+     */
+    public static void incrementIntegerOptimized(List<Integer> integer){
+        integer.set(integer.size()-1, integer.get(integer.size()-1)+1);
+        int index = integer.size() - 1;
+        while(index > 0 && integer.get(index) == 10){
+            integer.set(index, 0);
+            integer.set(index - 1, integer.get(index -1) + 1);
+            index--;
+        }
+        if(integer.get(0)==10){
+            integer.set(0, 0);
+            integer.add(0, 1);
         }
     }
 
