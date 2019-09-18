@@ -139,4 +139,18 @@ public class ProblemSolver {
         return true;
     }
 
+    /**
+     * Solves the problem 6.5 of EPI.
+     * deletes all the duplicate elements from the sorted array.
+     */
+    public static int deleteDuplicatesFromSortedArray(int[] array){
+        int i = 0;
+        int j = 0;
+        while(i<array.length){
+            Util.swap(array, i, j);
+            while(i<array.length-1 && array[i]==array[i+1]) i++;
+            i++;
+        }
+        return j;
+    }
 }
