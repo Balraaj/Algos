@@ -124,4 +124,19 @@ public class ProblemSolver {
         }
     }
 
+    /**
+     * Solves the problem 6.4 of EPI.
+     * returns true if the board game is winnable false otherwise.
+     * @param array
+     * @return
+     */
+    public static boolean solveBoardGame(int[] array){
+        int maxReachableSoFar = 0;
+        for(int i=0; i<array.length; i++) {
+            maxReachableSoFar = Math.max(maxReachableSoFar, i + array[i]);
+            if (maxReachableSoFar == i) return false;
+        }
+        return true;
+    }
+
 }

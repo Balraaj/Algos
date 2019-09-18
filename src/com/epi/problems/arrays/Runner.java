@@ -7,13 +7,7 @@ import java.util.List;
 
 public class Runner {
     public static void main(String[] args){
-//        int[] array = {1,2,3,3,2,1,1,2,3,3,2,1,3,3,1,1,2,2};
-//        ProblemSolver.dutchFlagSinglePass(array, 2);
-//        Util.printArray(array);
-
-        int[] number = {1,6,9,9,9,9};
-        List<Integer> integer = new ArrayList<Integer>(){{this.add(9);add(9);add(9);add(9);add(9);add(9);}};
-        ProblemSolver.incrementIntegerOptimized(integer);
-        System.out.println(integer);
+        int[] array = {3,2,0,0,2,0,1};
+        System.out.println("Game is winnable : "+ProblemSolver.solveBoardGame(array));
     }
 }
