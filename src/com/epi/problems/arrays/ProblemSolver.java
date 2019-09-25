@@ -153,4 +153,30 @@ public class ProblemSolver {
         }
         return j;
     }
+
+    public static void maxSumSubArray(int[] array){
+        int[] result = new int[3];
+
+        int localMax = 0;
+        int localStart = 0;
+        int globalMax = 0;
+        int globalStart = -1;
+        int globalEnd = -1;
+
+        for(int i=0;i<array.length;i++){
+            localMax += array[i];
+            if(localMax > globalMax){
+                globalMax = localMax;
+                globalStart = localStart;
+                globalEnd = i;
+            }
+            if(localMax <= 0){
+                localMax = 0;
+                localStart = i+1;
+            }
+        }
+        System.out.println("Maximum sum sub array: START: "+globalStart);
+        System.out.println("Maximum sum sub array: END: "+globalEnd);
+        System.out.println("Maximum sum sub array: SUM: "+globalMax);
+    }
 }
