@@ -8,10 +8,8 @@ import java.util.List;
 
 public abstract class Runner {
     public static void main(String[] args){
-
-        ProblemSolver.maxSumSubArray(new int[]{-5,4,12,-16,35,-9});
-//        int[] array = {3,2,0,0,2,0,1};
-//        System.out.println("Game is winnable : "+ProblemSolver.solveBoardGame(array));
+        int[] arrayOfShares = {7,11,13,9,12,8,14,13,15};
+        System.out.println("Maximum profit is : "+ProblemSolver.buySellShareTwice(arrayOfShares));
     }
 
     public abstract void get();

@@ -2,6 +2,7 @@ package com.epi.problems.arrays;
 
 import com.example.util.Util;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -154,6 +155,19 @@ public class ProblemSolver {
         return j;
     }
 
+    public static int deleteDuplicateFromSortedArray2(int[] array){
+        int swapCandidate = 1;
+        for(int i=1; i<array.length; i++){
+            if(array[swapCandidate-1] != array[i]){
+                Util.swap(array, swapCandidate++, i);
+            }
+            else{
+                swapCandidate++;
+            }
+        }
+        return swapCandidate;
+    }
+
     public static void maxSumSubArray(int[] array){
         int[] result = new int[3];
 
@@ -178,5 +192,35 @@ public class ProblemSolver {
         System.out.println("Maximum sum sub array: START: "+globalStart);
         System.out.println("Maximum sum sub array: END: "+globalEnd);
         System.out.println("Maximum sum sub array: SUM: "+globalMax);
+    }
+
+    /**
+     * This method solves the problem 6.7 of EPI
+     * @param array
+     * @return
+     */
+    public static int buySellShareTwice(int[] array){
+        int[] maxProfit = new int[array.length];
+        int maxTotalProfit = 0;
+        int maxValue = array[array.length-1];
+        for(int i=array.length-2; i>=0; i--){
+            maxTotalProfit = Math.max(maxTotalProfit, maxValue - array[i]);
+            maxValue = Math.max(maxValue, array[i]);
+            maxProfit[i] = maxTotalProfit;
+        }
+
+        int minValue = array[0];
+        int maxProfitSoFar = 0;
+        for(int i=1; i<array.length-1; i++) {
+            maxProfitSoFar = Math.max(maxProfitSoFar, array[i] - minValue);
+            minValue = Math.min(minValue, array[i]);
+            maxTotalProfit = Math.max(maxTotalProfit, maxProfitSoFar + maxProfit[i+1]);
+        }
+        return maxTotalProfit;
+    }
+
+
+    private static int[] maxProfitForBuyingAndSellingAfterI(int[] array){
+        return null;
     }
 }
