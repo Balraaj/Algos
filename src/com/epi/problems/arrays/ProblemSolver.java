@@ -4,6 +4,8 @@ import com.example.util.Util;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
+import java.util.TreeMap;
 
 /**
  * A utility class for the solutions of problems
@@ -220,7 +222,52 @@ public class ProblemSolver {
     }
 
 
-    private static int[] maxProfitForBuyingAndSellingAfterI(int[] array){
-        return null;
+    /*
+    There are N frustrated coders standing in a circle with a gun in their hands.
+    Each coder has a skill value S[ i ] and he can only kill those coders that have strictly less skill than him.
+    One more thing, all the guns have only 1 bullet. This roulette can take place in any random order.
+    Fortunately, you have the time stone and you can see all possible outcomes of this scenario.
+    Find the outcome where the total sum of the remaining coder's skill is minimum. Print this sum
+     */
+    public void killThemAll(){
+
+        Scanner s = new Scanner(System.in);
+        int n = s.nextInt();
+        int totalSkill = 0;
+        TreeMap<Integer, Integer> map = new TreeMap<>();
+        for(int i=0; i<n; i++){
+            int scannerNo = s.nextInt();
+            if(map.containsKey(scannerNo)){
+                map.put(scannerNo, map.get(scannerNo)+1);
+            }
+            else{
+                map.put(scannerNo,1);
+            }
+        }
+
+        if(map.size()==1){
+            totalSkill = map.firstEntry().getValue();
+        }
+
+        Integer key = map.higherKey(map.firstKey());
+        while(key != null){
+            int bullets = map.get(key);
+            while(bullets > 0){
+                Integer smallerKey = map.lowerKey(key);
+                if(smallerKey != null){
+                    if(map.get(smallerKey) == 1) map.remove(smallerKey);
+                    else map.put(smallerKey, map.get(smallerKey)-1);
+                }
+                else{
+                    break;
+                }
+                bullets--;
+            }
+            key = map.higherKey(key);
+        }
+        for(int k : map.keySet()){
+            totalSkill = totalSkill + k*map.get(k);
+        }
+        System.out.println(totalSkill);
     }
 }

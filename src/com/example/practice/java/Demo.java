@@ -1,5 +1,7 @@
 package com.example.practice.java;
 
+import java.util.Scanner;
+import java.util.TreeMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Demo{
@@ -17,7 +19,54 @@ public class Demo{
 //        object.staticA();
 //        object.A();
     }
+
+    public static int problemSolver(){
+        Scanner s = new Scanner(System.in);
+        int n = s.nextInt();
+
+        TreeMap<Integer, Integer> map = new TreeMap<>();
+        for(int i=0; i<n; i++){
+            int scannerNo = s.nextInt();
+            if(map.containsKey(scannerNo)){
+                map.put(scannerNo, map.get(scannerNo)+1);
+            }
+            else{
+                map.put(scannerNo,1);
+            }
+        }
+
+        if(map.size()==1){
+            return map.firstEntry().getValue();
+        }
+
+        Integer key = map.higherKey(map.firstKey());
+        while(key != null){
+            int bullets = map.get(key);
+            while(bullets > 0){
+                Integer smallerKey = map.lowerKey(key);
+                if(smallerKey != null){
+                    if(map.get(smallerKey) == 1) map.remove(smallerKey);
+                    else map.put(smallerKey, map.get(smallerKey)-1);
+                }
+                else{
+                    break;
+                }
+                bullets--;
+            }
+            key = map.higherKey(key);
+        }
+
+        int totalSkill = 0;
+        for(int k : map.keySet()){
+            totalSkill = totalSkill + k*map.get(k);
+        }
+        return totalSkill;
+    }
 }
+
+
+
+
 
 class A {
 
