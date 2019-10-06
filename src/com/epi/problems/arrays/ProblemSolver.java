@@ -2,10 +2,7 @@ package com.epi.problems.arrays;
 
 import com.example.util.Util;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
-import java.util.TreeMap;
+import java.util.*;
 
 /**
  * A utility class for the solutions of problems
@@ -269,5 +266,22 @@ public class ProblemSolver {
             totalSkill = totalSkill + k*map.get(k);
         }
         System.out.println(totalSkill);
+    }
+
+
+    /* EPI: 6.8 Given an integer n, return a list of all the primes upto N
+       Following is an implementation of 'Sieve of Eratosthenes'
+     */
+    public static List<Integer> findPrimesUptoN(int n){
+        boolean[] primes = new boolean[n];
+        Arrays.fill(primes, true);
+        List<Integer> result = new ArrayList<>();
+        for(int i=2; i<n; i++){
+            if(primes[i]){
+                result.add(i);
+                for(int j=i*i; j<n; j+=i) primes[j] = false;
+            }
+        }
+        return result;
     }
 }

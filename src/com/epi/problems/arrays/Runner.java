@@ -8,8 +8,11 @@ import java.util.List;
 
 public abstract class Runner {
     public static void main(String[] args){
-        int[] arrayOfShares = {7,11,13,9,12,8,14,13,15};
-        System.out.println("Maximum profit is : "+ProblemSolver.buySellShareTwice(arrayOfShares));
+//        int[] arrayOfShares = {7,11,13,9,12,8,14,13,15};
+//        System.out.println("Maximum profit is : "+ProblemSolver.buySellShareTwice(arrayOfShares));
+
+        /* Print list of all primes in first 1000 numbers; */
+        System.out.println(ProblemSolver.findPrimesUptoN(10));
     }
 
     public abstract void get();
