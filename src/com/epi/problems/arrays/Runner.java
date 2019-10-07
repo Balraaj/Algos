@@ -12,7 +12,12 @@ public abstract class Runner {
 //        System.out.println("Maximum profit is : "+ProblemSolver.buySellShareTwice(arrayOfShares));
 
         /* Print list of all primes in first 1000 numbers; */
-        System.out.println(ProblemSolver.findPrimesUptoN(10));
+//        System.out.println(ProblemSolver.findPrimesUptoN(10));
+
+        String pattern = "abcdef";
+        int[] permutation = {5,4,3,2,1,0};
+        System.out.println(ProblemSolver.permute(pattern, permutation));
+
     }
 
     public abstract void get();

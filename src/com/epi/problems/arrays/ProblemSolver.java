@@ -284,4 +284,36 @@ public class ProblemSolver {
         }
         return result;
     }
+
+
+    /**
+     *EPI: 6.9: Given a string of characters and a permutation of it, return the
+     * string by applying the permutation.
+     * @param pattern string of characters
+     * @param permutation an integer array, value stored at index i, gives the new location of
+     *                    character originally at location i
+     * @return
+     */
+    public static String permute(String pattern, int[] permutation){
+        char[] patternArr = pattern.toCharArray();
+
+        int i = 0;
+        char temp;
+        while(i < permutation.length){
+            int j = i;
+            temp = patternArr[i];
+            while(permutation[j] != -1){
+                char localTemp = patternArr[permutation[j]];
+                patternArr[permutation[j]] = temp;
+                temp = localTemp;
+                int prev = permutation[j];
+                permutation[j] = -1;
+                j = prev;
+            }
+            i++;
+        }
+
+        return new String(patternArr);
+    }
+
 }
