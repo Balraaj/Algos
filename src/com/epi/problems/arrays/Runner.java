@@ -17,8 +17,10 @@ public abstract class Runner {
 //        String pattern = "abcdef";
 //        int[] permutation = {5,4,3,2,1,0};
 //        System.out.println(ProblemSolver.permute(pattern, permutation));
+//
+//        getNextPermutation();
 
-        getNextPermutation();
+        rotateArray();
     }
 
     public abstract void get();
@@ -31,6 +33,18 @@ public abstract class Runner {
         permutation = ProblemSolver.nextPermutation(permutation);
         System.out.println("\nNext permutation is : ");
         Util.printArray(permutation);
+    }
+
+    private static void rotateArray(){
+        int[] array = {1,2,3,4,5,6,7,8,9,10};
+            array = ProblemSolver.rotateArray(new int[]{1,2,3,4,5,6,7,8},3);
+            Util.printArray(array);
+            System.out.println("\n\n");
+
+        array = ProblemSolver.rotateArray(new int[]{1,2,3,4,5,6,7,8},-5);
+        Util.printArray(array);
+        System.out.println("\n\n");
+
     }
 }
 

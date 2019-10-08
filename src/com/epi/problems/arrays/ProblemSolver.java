@@ -351,4 +351,48 @@ public class ProblemSolver {
         return permutation;
     }
 
+    /**
+     * Given an array and an integer k, this method rotates the array
+     * k places. the direction of rotation is determined by the
+     * sign of parameter k.
+     * if k is negative then a right shift is performed otherwise a
+     * left shift is performed.
+     *
+     * EX: {1,2,3,4,5,6,7,8} original array
+     *     {4,5,6,7,8,1,2,3} here k is 3 or -5
+     * @param array
+     * @param k
+     * @return
+     */
+    public static int[] rotateArray(int[] array, int k){
+        int RIGHT_SHIFT = 1;
+        int LEFT_SHIFT = 2;
+        int shiftDirection = LEFT_SHIFT;
+        int length = array.length;
+        if(k==0) return array;
+        if(k<0) {
+            shiftDirection = RIGHT_SHIFT;
+            k = Math.abs(k);
+        }
+        k = k % length;
+
+        int start = 0;
+        int end = shiftDirection == LEFT_SHIFT ? k-1 : length - k - 1;
+        while(start<end){
+            Util.swap(array, start++, end--);
+        }
+
+        start = shiftDirection == LEFT_SHIFT ? k : length -k;
+        end = length-1;
+        while(start<end){
+            Util.swap(array, start++, end--);
+        }
+
+        start = 0;
+        end = length-1;
+        while(start<end){
+            Util.swap(array, start++, end--);
+        }
+        return array;
+    }
 }
