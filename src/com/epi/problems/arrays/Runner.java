@@ -13,14 +13,25 @@ public abstract class Runner {
 
         /* Print list of all primes in first 1000 numbers; */
 //        System.out.println(ProblemSolver.findPrimesUptoN(10));
+//
+//        String pattern = "abcdef";
+//        int[] permutation = {5,4,3,2,1,0};
+//        System.out.println(ProblemSolver.permute(pattern, permutation));
 
-        String pattern = "abcdef";
-        int[] permutation = {5,4,3,2,1,0};
-        System.out.println(ProblemSolver.permute(pattern, permutation));
-
+        getNextPermutation();
     }
 
     public abstract void get();
+
+    private static void getNextPermutation(){
+
+        int[] permutation = {0,9,8,7,6,5,4,3,2,1};
+        System.out.println("\nCurrent permutation is : ");
+        Util.printArray(permutation);
+        permutation = ProblemSolver.nextPermutation(permutation);
+        System.out.println("\nNext permutation is : ");
+        Util.printArray(permutation);
+    }
 }
 
 class HashSet<T>{

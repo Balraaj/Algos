@@ -316,4 +316,39 @@ public class ProblemSolver {
         return new String(patternArr);
     }
 
+
+    /**
+     * EPI: 6.10 : Write a program that takes as input a permutation, and returns the next permutation
+     * under dictionary ordering. If the permutation is the last permutation, return the
+     * empty array.
+     * @param permutation
+     * @return
+     */
+    public static int[] nextPermutation(int[] permutation){
+        int pivotIndex = -1;
+        for(int i=permutation.length-1; i>0; i--){
+            if(permutation[i]>permutation[i-1]){
+                pivotIndex = i-1;
+                break;
+            }
+        }
+        if(pivotIndex == -1){
+            return new int[0];
+        }
+
+        for(int i=permutation.length-1; i>pivotIndex; i--){
+            if(permutation[i]>permutation[pivotIndex]){
+                Util.swap(permutation, i, pivotIndex);
+                break;
+            }
+        }
+
+        int i = pivotIndex+1;
+        int j = permutation.length-1;
+        while(i<j){
+            Util.swap(permutation, i++, j--);
+        }
+        return permutation;
+    }
+
 }
