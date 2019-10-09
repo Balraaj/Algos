@@ -18,9 +18,12 @@ public abstract class Runner {
 //        int[] permutation = {5,4,3,2,1,0};
 //        System.out.println(ProblemSolver.permute(pattern, permutation));
 //
-//        getNextPermutation();
+        int[] array = {1,2,3,4,5,6,7,8,9};
+        for(int i=1; i<10; i++){
+            System.out.println();
+            Util.printArray(ProblemSolver.offlineData(array, 5), 5);
+        }
 
-        rotateArray();
     }
 
     public abstract void get();

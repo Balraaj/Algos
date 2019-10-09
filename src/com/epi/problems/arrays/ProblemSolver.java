@@ -3,6 +3,7 @@ package com.epi.problems.arrays;
 import com.example.util.Util;
 
 import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * A utility class for the solutions of problems
@@ -394,5 +395,20 @@ public class ProblemSolver {
             Util.swap(array, start++, end--);
         }
         return array;
+    }
+
+
+    /**
+     * EPI: 6.11 : Given a data set and a size, return a subset of this size.
+     * choice of every subset must be equally likely.
+     * @param array
+     * @param size
+     */
+    public static int[] offlineData(int[] array, int size){
+        int[] result = Arrays.copyOf(array, array.length);
+        for(int i=0; i<size; i++){
+            Util.swap(result, i, ThreadLocalRandom.current().nextInt(i, result.length));
+        }
+        return result;
     }
 }
