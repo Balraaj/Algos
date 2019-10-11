@@ -17,16 +17,22 @@ public abstract class Runner {
 //        String pattern = "abcdef";
 //        int[] permutation = {5,4,3,2,1,0};
 //        System.out.println(ProblemSolver.permute(pattern, permutation));
-//
-        int[] array = {1,2,3,4,5,6,7,8,9};
-        for(int i=1; i<10; i++){
-            System.out.println();
-            Util.printArray(ProblemSolver.offlineData(array, 5), 5);
-        }
+////
+//        int[] array = {1,2,3,4,5,6,7,8,9};
+//        for(int i=1; i<10; i++){
+//            System.out.println();
+//            Util.printArray(ProblemSolver.offlineData(array, 5), 5);
+//        }
 
+        computeRandomPermutations();
     }
 
-    public abstract void get();
+    private static void computeRandomPermutations(){
+        for(int i=0; i<10; i++){
+            System.out.println();
+            Util.printArray(ProblemSolver.randomPermutation(10));
+        }
+    }
 
     private static void getNextPermutation(){
 

@@ -411,4 +411,18 @@ public class ProblemSolver {
         }
         return result;
     }
+
+    /**
+     * EPI: 6.13: Compute a random permutation of given size.
+     * every outcome must be equally likely.
+     * @param size
+     * @return
+     */
+    public static int[] randomPermutation(int size){
+        int[] permutation = new int[size];
+        for(int i=0; i<size; i++) {
+            permutation[i] = i;
+        }
+        return offlineData(permutation, size);
+    }
 }
