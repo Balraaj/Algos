@@ -56,4 +56,39 @@ public class ProblemSolver {
         if(isNegative) return str.append('-').reverse().toString();
         return str.reverse().toString();
     }
+
+    /**
+     * EPI: 7.2: Given a number as a string in base b1,
+     * convert this number to base b2.
+     * EX: number ABCDEF, b1 = 16, b2 = 10 --> result = 10340300000
+     *
+     * Many optimizations can be made, for example if b1 is square root of b2
+     * or b2 is square root of b1.
+     * Base conversion
+     */
+
+    public static String convertBase(String number, int b1, int b2){
+        boolean isNegative = number.charAt(0) == '-';
+        boolean isSigned = isNegative || number.charAt(0) == '+';
+        StringBuilder result = new StringBuilder();
+
+        int decimal = 0;
+        for(int i = isSigned ? 1 : 0; i<number.length(); i++){
+            char c = number.charAt(i);
+            int digit = Character.isDigit(c) ? (c-'0') : ((c-'A') + 10);
+            decimal = (decimal * b1) + digit;
+        }
+
+        while(decimal>0){
+            int digit = decimal % b2;
+            if(digit>=10){
+                result.append((char)(55+digit));
+            }
+            else{
+                result.append(digit);
+            }
+            decimal/=b2;
+        }
+        return isNegative ? result.append('-').reverse().toString() : result.reverse().toString();
+    }
 }
