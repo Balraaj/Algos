@@ -1,11 +1,8 @@
 package com.example.practice;
 
 import com.example.practice.problems.Binomial;
-import com.example.practice.problems.Fibonacci;
 import com.example.practice.sort.HeapSort;
 import com.example.util.Util;
-
-import java.util.HashMap;
 
 public class Driver {
 

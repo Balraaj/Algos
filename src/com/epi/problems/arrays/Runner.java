@@ -2,9 +2,7 @@ package com.epi.problems.arrays;
 
 import com.example.util.Util;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public abstract class Runner {
     public static void main(String[] args){

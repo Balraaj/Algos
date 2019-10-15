@@ -91,4 +91,35 @@ public class ProblemSolver {
         }
         return isNegative ? result.append('-').reverse().toString() : result.reverse().toString();
     }
+
+    /**
+     * EPI: 7.3: Given a spread sheet column index ex ('AA','ZA','D')
+     * convert it to corresponding integer.
+     * @param index
+     * @return
+     */
+    public static int decodeSpreadSheetIndex(String index){
+        int result = 0;
+        for(int i=0; i<index.length(); i++){
+            result = (result * 26)+(index.charAt(i) - 'A' +1);
+        }
+        return result;
+    }
+
+    /**
+     * EPI: 7.3: Variant: Given an int convert it to spread sheet
+     * column index.
+     * @param value
+     * @return
+     */
+    public static String encodeIntAsSpreadSheetIndex(int value){
+        StringBuilder result = new StringBuilder();
+        while(value>=1){
+            int digit = value % 26;
+            char charToInsert = (char)(digit==0?'Z':'A'+digit-1);
+            result.append(charToInsert);
+            value = (value - (charToInsert - 'A' +1)) / 26;
+        }
+        return result.reverse().toString();
+    }
 }
