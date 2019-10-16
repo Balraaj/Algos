@@ -10,7 +10,9 @@ public class Runner {
 //        String number = ProblemSolver.i2S(-123234);
 //        System.out.println(number);
 //        System.out.println(ProblemSolver.convertBase("ABCDEF",16,5));
-        decode();
+
+        String str = "Ray a Ray";
+        System.out.println(ProblemSolver.isPalindrome(str));
     }
 
     public static void decode(){
