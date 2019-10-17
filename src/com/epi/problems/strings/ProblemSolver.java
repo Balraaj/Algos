@@ -141,4 +141,38 @@ public class ProblemSolver {
         }
         return true;
     }
+
+    /**
+     * EPI: 7.4: Given a string remove all the b's and replace every
+     * a with 2 d's
+     * @param str
+     * @return
+     */
+    public static String removeAndReplace(char[] str){
+        int currentIndex = 0;
+        int copyIndex = 0;
+        int totalA = 0;
+        while(currentIndex < str.length){
+            if(Character.toLowerCase(str[currentIndex])!='b'){
+                str[copyIndex++] = str[currentIndex];
+            }
+            if(Character.toLowerCase(str[currentIndex])=='a') totalA++;
+            currentIndex++;
+        }
+
+        copyIndex--;
+        int startIndex = copyIndex + totalA;
+        int count = startIndex;
+        while(startIndex >= 0){
+            if(Character.toLowerCase(str[copyIndex])=='a'){
+                str[startIndex--] = 'd';
+                str[startIndex--] = 'd';
+            }
+            else {
+                str[startIndex--] = str[copyIndex];
+            }
+            copyIndex--;
+        }
+        return new String(str, 0, count+1);
+    }
 }

@@ -11,8 +11,7 @@ public class Runner {
 //        System.out.println(number);
 //        System.out.println(ProblemSolver.convertBase("ABCDEF",16,5));
 
-        String str = "Ray a Ray";
-        System.out.println(ProblemSolver.isPalindrome(str));
+          System.out.println(ProblemSolver.removeAndReplace("babcbdbebbbbbbfbagbhbbibbb".toCharArray()));
     }
 
     public static void decode(){
