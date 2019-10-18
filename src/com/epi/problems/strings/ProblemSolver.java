@@ -175,4 +175,42 @@ public class ProblemSolver {
         }
         return new String(str, 0, count+1);
     }
+
+
+    public static char[] reverse(char[] str){
+        int i = 0;
+        int j = str.length-1;
+        while(i<j){
+            char temp = str[j];
+            str[j--] = str[i];
+            str[i++] = temp;
+        }
+
+        j = 0;
+        int wordStart = 0;
+        int wordEnd = 0;
+        while(j < str.length){
+            /* Skip all the white spaces before a word */
+            while((j<str.length) && (Character.isSpaceChar(str[j]))){j++;}
+            wordStart = j; // Set word starting location
+
+            /* Move to the end of word*/
+            while((j<str.length) && (!Character.isSpaceChar(str[j]))){j++;}
+            wordEnd = j-1;
+
+            if((wordStart < wordEnd) && (wordStart < str.length)){
+                reverseWord(str,wordStart, wordEnd);
+            }
+        }
+
+        return str;
+    }
+
+    private static void reverseWord(char[] str, int start, int end){
+        while(start < end){
+            char temp = str[end];
+            str[end--] = str[start];
+            str[start++] = temp;
+        }
+    }
 }

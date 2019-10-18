@@ -11,7 +11,9 @@ public class Runner {
 //        System.out.println(number);
 //        System.out.println(ProblemSolver.convertBase("ABCDEF",16,5));
 
-          System.out.println(ProblemSolver.removeAndReplace("babcbdbebbbbbbfbagbhbbibbb".toCharArray()));
+//          System.out.println(ProblemSolver.removeAndReplace("babcbdbebbbbbbfbagbhbbibbb".toCharArray()));
+        char[] result = ProblemSolver.reverse("b       a c what    ".toCharArray());
+        System.out.println(new String(result));
     }
 
     public static void decode(){
