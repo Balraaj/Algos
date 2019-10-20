@@ -1,5 +1,6 @@
 package com.epi.problems.strings;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -251,5 +252,36 @@ public class ProblemSolver {
                 mnemonicHelper(phoneNo, digit+1, partialMnemonic, mnemonics);
             }
         }
+    }
+
+
+    /**
+     * EPI: 7.8: Look-And-Say problem.
+     * return nth term in Look-And-Say sequence;
+     * @param n
+     * @return
+     */
+    public static String lookAndSay(int n){
+        String start = "1";
+        for(int i=1; i<n; i++){
+            StringBuilder temp = new StringBuilder();
+            int k=0;
+            while(k<start.length()){
+                char currentChar = start.charAt(k);
+                int j = k+1;
+                while(j<start.length() && start.charAt(j) == currentChar) j++;
+                temp.append(j-k).append(currentChar);
+                k=j;
+            }
+            start = temp.toString();
+        }
+        return start;
+    }
+
+    private static String getNextElement(String str, int start){
+        char currentChar = str.charAt(start);
+        int i = start+1;
+        while(i<str.length() && str.charAt(i) == currentChar) i++;
+        return ""+(i-start)+currentChar;
     }
 }

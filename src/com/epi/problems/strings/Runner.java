@@ -12,8 +12,15 @@ public class Runner {
 //        System.out.println(ProblemSolver.convertBase("ABCDEF",16,5));
 
 //          System.out.println(ProblemSolver.removeAndReplace("babcbdbebbbbbbfbagbhbbibbb".toCharArray()));
-        char[] result = ProblemSolver.reverse("Hello this is me".toCharArray());
-        System.out.println(new String(result));
+//        char[] result = ProblemSolver.reverse("Hello this is me".toCharArray());
+//        System.out.println(new String(result));
+        lookAndSay();
+    }
+
+    public static void lookAndSay(){
+        for(int i=1;i<10;i++){
+            System.out.println(ProblemSolver.lookAndSay(i));
+        }
     }
 
     public static void decode(){
