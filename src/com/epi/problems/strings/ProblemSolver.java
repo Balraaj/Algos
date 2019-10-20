@@ -1,5 +1,8 @@
 package com.epi.problems.strings;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * A utility class for the solutions of problems
  * which doesn't warrant an individual class
@@ -177,6 +180,13 @@ public class ProblemSolver {
     }
 
 
+    /**
+     * EPI: 7.6: Given a sentence, reverse all the words
+     * in it.
+     * EX. "Hello this is me" --> "me is this Hello"
+     * @param str
+     * @return
+     */
     public static char[] reverse(char[] str){
         int i = 0;
         int j = str.length-1;
@@ -211,6 +221,35 @@ public class ProblemSolver {
             char temp = str[end];
             str[end--] = str[start];
             str[start++] = temp;
+        }
+    }
+
+
+    /**
+     * EPI: 7.7: Given a phone no. as string,
+     * compute all possible mnemonics
+     * @param phoneNo
+     * @return
+     */
+
+    public static List<String> getMnemonics(String phoneNo){
+        List<String> mnemonics = new ArrayList<>();
+        char[] partialMnemonic = new char[phoneNo.length()];
+        mnemonicHelper(phoneNo, 0, partialMnemonic, mnemonics);
+        return mnemonics;
+    }
+
+    private static String[] MAP = {"0","1","ABC","DEF","GHI","JKL","MNO","PQRS","TUV","WXYZ"};
+    private static void mnemonicHelper(String phoneNo, int digit, char[] partialMnemonic, List<String> mnemonics){
+        if(digit == phoneNo.length()){
+            mnemonics.add(new String(partialMnemonic));
+        }
+        else{
+            for(int i=0; i<MAP[phoneNo.charAt(digit) - '0'].length(); i++){
+                char c = MAP[phoneNo.charAt(digit) - '0'].charAt(i);
+                partialMnemonic[digit] = c;
+                mnemonicHelper(phoneNo, digit+1, partialMnemonic, mnemonics);
+            }
         }
     }
 }

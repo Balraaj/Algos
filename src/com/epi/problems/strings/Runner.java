@@ -12,7 +12,7 @@ public class Runner {
 //        System.out.println(ProblemSolver.convertBase("ABCDEF",16,5));
 
 //          System.out.println(ProblemSolver.removeAndReplace("babcbdbebbbbbbfbagbhbbibbb".toCharArray()));
-        char[] result = ProblemSolver.reverse("b       a c what    ".toCharArray());
+        char[] result = ProblemSolver.reverse("Hello this is me".toCharArray());
         System.out.println(new String(result));
     }
 
