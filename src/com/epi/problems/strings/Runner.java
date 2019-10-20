@@ -14,7 +14,10 @@ public class Runner {
 //          System.out.println(ProblemSolver.removeAndReplace("babcbdbebbbbbbfbagbhbbibbb".toCharArray()));
 //        char[] result = ProblemSolver.reverse("Hello this is me".toCharArray());
 //        System.out.println(new String(result));
-        lookAndSay();
+       // lookAndSay();
+
+//        System.out.println(kangaroo(28,8,96,2));
+        ip();
     }
 
     public static void lookAndSay(){
@@ -40,5 +43,19 @@ public class Runner {
      for (int i=1; i<2000;i++){
          System.out.println(ProblemSolver.encodeIntAsSpreadSheetIndex(i));
      }
+    }
+
+    static String kangaroo(int x1, int v1, int x2, int v2) {
+        if((x1>x2) && (v1>v2)) return "NO";
+        if((x2>x1) && (v2>v1)) return "NO";
+
+        double result = ((double)x2-x1)/(v1-v2);
+        int intResult = (int)result;
+        return ((result<0) || (result!=intResult))? "NO" : "YES";
+
+    }
+
+    private static void ip(){
+        System.out.println(ProblemSolver.ipAddress("255255101"));
     }
 }

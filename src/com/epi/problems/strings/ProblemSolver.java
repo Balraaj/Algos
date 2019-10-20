@@ -284,4 +284,45 @@ public class ProblemSolver {
         while(i<str.length() && str.charAt(i) == currentChar) i++;
         return ""+(i-start)+currentChar;
     }
+
+    /**
+     * EPI: 7.10: Given an integer which represents a valid ip address.
+     * insert the decimal points at correct places
+     * @param ipAddress
+     * @return
+     */
+
+    public static List<String> ipAddress(String ipAddress){
+        List<String> result = new ArrayList<>();
+        String temp;
+        for(int i=0; i<ipAddress.length()-3; i++){
+            temp = ipAddress.substring(0,i+1);
+            int firstOctet = Integer.valueOf(temp);
+            if((temp.length()>1) && (temp.startsWith("0")) || (firstOctet>255)) continue;
+            for(int j=i+1; j<i+4 && j<ipAddress.length()-2; j++){
+                temp = ipAddress.substring(i+1, j+1);
+                int secondOctet = Integer.valueOf(temp);
+                if((temp.length()>1) && (temp.startsWith("0")) || (secondOctet>255)) continue;
+                for(int k=j+1; k<j+4 && k<ipAddress.length()-1; k++){
+                    temp = ipAddress.substring(j+1, k+1);
+                    int thirdOctet = Integer.valueOf(temp);
+                    if((temp.length()>1) && (temp.startsWith("0")) || (thirdOctet>255)) continue;
+
+                    temp = ipAddress.substring(k+1);
+                    int fourthOctet = Integer.valueOf(temp);
+                    if((temp.length()>1) && (temp.startsWith("0")) || (fourthOctet>255)) continue;
+
+                    StringBuilder str = new StringBuilder();
+                    str.append(firstOctet).append(".")
+                            .append(secondOctet).append(".")
+                            .append(thirdOctet).append(".")
+                            .append(fourthOctet);
+                        result.add(str.toString());
+
+                }
+
+            }
+        }
+        return result;
+    }
 }
