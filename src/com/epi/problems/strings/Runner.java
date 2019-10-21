@@ -1,7 +1,5 @@
 package com.epi.problems.strings;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Runner {
@@ -17,7 +15,9 @@ public class Runner {
        // lookAndSay();
 
 //        System.out.println(kangaroo(28,8,96,2));
-        ip();
+//        ip();
+
+        System.out.println(ProblemSolver.sinusoidString("balraj singh"));
     }
 
     public static void lookAndSay(){

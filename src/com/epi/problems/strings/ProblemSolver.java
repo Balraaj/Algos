@@ -325,4 +325,28 @@ public class ProblemSolver {
         }
         return result;
     }
+
+
+    /**
+     * EPI: 7.11: Given a string return its sinusoid form
+     * @param str
+     * @return
+     */
+
+    public static String sinusoidString(String str){
+        StringBuilder result = new StringBuilder();
+        for(int i=1; i<str.length(); i+=4){
+            result.append(str.charAt(i));
+        }
+
+        for(int i=0; i<str.length(); i+=2){
+            result.append(str.charAt(i));
+        }
+
+        for(int i=3; i<str.length(); i+=4){
+            result.append(str.charAt(i));
+        }
+
+        return result.toString();
+    }
 }
