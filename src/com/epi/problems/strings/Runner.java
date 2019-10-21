@@ -19,7 +19,9 @@ public class Runner {
 
 //        System.out.println(ProblemSolver.sinusoidString("balraj singh"));
 
-        System.out.println(ProblemSolver.decodeRunLength(ProblemSolver.encodeRunLength("abcdefghijklmnopqrstuvwxyzaaaabbbded")));
+//        System.out.println(ProblemSolver.decodeRunLength(ProblemSolver.encodeRunLength("abcdefghijklmnopqrstuvwxyzaaaabbbded")));
+
+        System.out.println(KMP.firstOccurrence("This is some text and it contains some", "xt"));
     }
 
     public static void lookAndSay(){
