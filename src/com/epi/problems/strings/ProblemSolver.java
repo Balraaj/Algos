@@ -349,4 +349,42 @@ public class ProblemSolver {
 
         return result.toString();
     }
+
+
+    /**
+     * EPI: 7.12: part 1: do run length encoding of given string
+     * @param str
+     * @return
+     */
+    public static String encodeRunLength(String str){
+        StringBuilder result = new StringBuilder();
+        for(int i=0; i<str.length(); i++){
+            char currentChar = str.charAt(i);
+            int count = 1;
+            while(i<str.length()-1 && str.charAt(i+1)==currentChar) {
+                i++;
+                count++;
+            }
+            result.append(count).append(currentChar);
+        }
+        return result.toString();
+    }
+
+
+    /**
+     * EPI: 7.13: part 2: decode string, encoded by run length encoding
+     * @param str
+     * @return
+     */
+    public static String decodeRunLength(String str){
+        StringBuilder result = new StringBuilder();
+        for(int i=0; i<str.length(); i+=2){
+            int count = Integer.parseInt(str.substring(i,i+1));
+            char currentChar = str.charAt(i+1);
+            for(int j=0; j<count; j++){
+                result.append(currentChar);
+            }
+        }
+        return result.toString();
+    }
 }

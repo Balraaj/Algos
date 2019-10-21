@@ -17,7 +17,9 @@ public class Runner {
 //        System.out.println(kangaroo(28,8,96,2));
 //        ip();
 
-        System.out.println(ProblemSolver.sinusoidString("balraj singh"));
+//        System.out.println(ProblemSolver.sinusoidString("balraj singh"));
+
+        System.out.println(ProblemSolver.decodeRunLength(ProblemSolver.encodeRunLength("abcdefghijklmnopqrstuvwxyzaaaabbbded")));
     }
 
     public static void lookAndSay(){
