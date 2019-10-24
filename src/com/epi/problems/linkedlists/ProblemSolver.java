@@ -59,4 +59,23 @@ public class ProblemSolver {
         parent.next = runner1 == null ? runner2 : runner1;
         return head;
     }
+
+    /**
+     * EPI: LinkedList: 8.2: personal variant: Reverse a list
+     * @param list
+     */
+    public static void reverseList(LinkedList<Integer> list){
+        reverseHelper(list, list.HEAD, list.HEAD.next);
+    }
+
+    private static void reverseHelper(LinkedList<Integer> list, ListNode<Integer> pre, ListNode<Integer> current){
+        if(current.next == null){
+            list.HEAD.next = null;
+            list.HEAD = current;
+            current.next = pre;
+            return;
+        }
+        reverseHelper(list, current, current.next);
+        current.next = pre;
+    }
 }
