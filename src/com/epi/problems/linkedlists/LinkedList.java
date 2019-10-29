@@ -57,4 +57,19 @@ public class LinkedList<T> {
         }
     }
 
+    public static void addCycle(LinkedList<Integer> list, int start){
+        ListNode<Integer> startNode = list.HEAD;
+        for(int i=1; i<start; i++){
+            startNode = startNode.next;
+        }
+
+        ListNode<Integer> endNode = startNode.next;
+        while(endNode.next != null){
+            endNode = endNode.next;
+        }
+
+        endNode.next = startNode;
+
+    }
+
 }

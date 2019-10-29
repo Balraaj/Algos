@@ -78,4 +78,29 @@ public class ProblemSolver {
         reverseHelper(list, current, current.next);
         current.next = pre;
     }
+
+    /**
+     * EPI: 8.3: Given a linked list check if it has a cycle,
+     * if cycle exists then return the first node in the cycle.
+     * @param list
+     * @return
+     */
+    public static ListNode<Integer> findCycle(LinkedList<Integer> list){
+        ListNode<Integer> p1 = list.HEAD;
+        ListNode<Integer> p2 = list.HEAD;
+
+        while(p1 != null && p1.next != null && p1.next.next != null){
+            p2 = p2.next;
+            p1 = p1.next.next;
+            if(p1 == p2){
+                p1 = list.HEAD;
+                while(p1 != p2){
+                    p1 = p1.next;
+                    p2 = p2.next;
+                }
+                return p1;
+            }
+        }
+        return null;
+    }
 }
