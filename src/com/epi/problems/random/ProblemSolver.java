@@ -57,4 +57,48 @@ public class ProblemSolver {
 
         return result;
     }
+
+    /**
+     * Plain old binary search
+     * @param array
+     * @param value
+     * @param start
+     * @param end
+     * @return
+     */
+
+    public static int binarySearch(int[] array, int value, int start, int end){
+        if(start <= end){
+            int mid = (start+end)/2;
+            if (array[mid] == value) return mid;
+            else if(array[mid] < value) start = mid+1;
+            else end = mid-1;
+            return binarySearch(array, value, start, end);
+        }
+        return -1;
+    }
+
+    /**
+     * Modified binary search to find the closest value to a given value
+     * in an array.
+     * @param array
+     * @param value
+     * @return
+     */
+    public static int findClosest(int[] array, int value){
+        if(value < array[0]) return array[0];
+        if(value > array[array.length-1]) return array[array.length-1];
+
+        int low = 0;
+        int high = array.length -1;
+
+        while(low <= high){
+            int mid = (low+high)/2;
+            if(array[mid] == value) return array[mid];
+            else if(array[mid] < value) low = mid+1;
+            else high = mid-1;
+        }
+
+        return ((array[low] - value) < (value - array[high])) ? array[low] : array[high];
+    }
 }
