@@ -101,4 +101,18 @@ public class ProblemSolver {
 
         return ((array[low] - value) < (value - array[high])) ? array[low] : array[high];
     }
+
+
+    public static int findRotationIndex(int[] array){
+        if(array.length == 0) return -1;
+        int low = 0;
+        int high = array.length-1;
+        int mid = (low+high)/2;
+        while(array[low] > array[high]){
+            mid = (low+high)/2;
+            if(array[mid] > array[high]) low = mid+1;
+            else high = mid;
+        }
+        return low;
+    }
 }
