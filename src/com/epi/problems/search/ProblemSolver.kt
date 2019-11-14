@@ -21,4 +21,33 @@ object ProblemSolver{
         }
         return result
     }
+
+    /**
+     * EPI 12.1: Variant 1: Design an efficient algorithm that takes a sorted array and a key, and finds
+     * the index of the first occurrence of an element greater than that key.
+     */
+    fun findFirstMGreaterThenK(array: Array<Int>, k: Int): Int{
+        if(array.isEmpty() || array[array.size-1] <= k) return -1
+        if(array[0] > k) return 0
+
+        var low = 0
+        var high = array.size-1
+        var mid: Int
+        var result = -1
+
+        while(low <= high){
+            mid = low + (high-low) / 2
+            when {
+                array[mid] > k -> high = mid - 1
+                array[mid] == k -> {
+                    result = mid
+                    low = mid + 1
+                }
+                else -> low = mid + 1
+            }
+        }
+
+        /* Result is pointing to the last occurrence of k */
+        return result + 1
+    }
 }
