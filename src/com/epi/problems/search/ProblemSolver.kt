@@ -50,4 +50,24 @@ object ProblemSolver{
         /* Result is pointing to the last occurrence of k */
         return result + 1
     }
+
+    /**
+     * EPI 12.2: Design an efficient algorithm that takes a sorted array of distinct integers, and returns
+     * an index i such that the element at index i equals i.
+     */
+    fun findKEqualToIndex(array: Array<Int>): Int{
+        var low = 0
+        var high = array.size -1
+        var mid: Int
+
+        while(low <= high){
+            mid = low +(high - low)/2
+            when{
+                array[mid] > mid -> high = mid -1
+                array[mid] == mid -> return mid
+                else -> low = mid + 1
+            }
+        }
+        return -1
+    }
 }
