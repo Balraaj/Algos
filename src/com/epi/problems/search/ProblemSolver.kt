@@ -70,4 +70,23 @@ object ProblemSolver{
         }
         return -1
     }
+
+    /**
+     * EPI 12.3: Find rotation point of a sorted rotated array containing distinct elements.
+     */
+
+    fun findRotationPoint(array: Array<Int>): Int{
+        var low = 0
+        var high = array.size -1
+        var mid: Int
+
+        while(array[low] > array[high]){
+            mid = low +(high-low)/2
+            when{
+                array[mid] > array[high] ->  low = mid + 1
+                else -> high = mid
+            }
+        }
+        return low
+    }
 }
