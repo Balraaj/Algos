@@ -89,4 +89,35 @@ object ProblemSolver{
         }
         return low
     }
+
+    /**
+     * EPI: 12.3: Variant: A sequence is strictly ascending
+     * if each element is greater than its predecessor.
+     * Suppose it is known that an array A consists of a strictly ascending sequence
+     * followed by a strictly descending sequence.
+     * Design an algorithm for finding the maximum element in A.
+     */
+    fun findMaxInBellCurve(array: Array<Int>): Int{
+        /** Handle the edge cases */
+        if (array.isEmpty()) return -1
+        if (array.size ==1) return 0
+        if (array.size ==2) return if(array[0] > array[1]) 0 else 1
+
+        var start = 0
+        var end = array.size -1
+        var mid: Int
+        while(start<=end){
+            mid = start + (end-start)/2
+            if((array[mid]>array[mid-1]) && (array[mid]<array[mid+1])){
+                start = mid+1
+            }
+            else if((array[mid]>array[mid-1]) && (array[mid]>array[mid+1])){
+                return mid
+            }
+            else {
+                end = mid-1
+            }
+        }
+        return -1
+    }
 }
