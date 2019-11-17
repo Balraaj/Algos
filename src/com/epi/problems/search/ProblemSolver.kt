@@ -120,4 +120,24 @@ object ProblemSolver{
         }
         return -1
     }
+
+    /**
+     * EPI: 12.3: Variant: 2
+     */
+    fun findKInSortedRotatedArray(array: Array<Int>, k: Int): Int {
+        var start = 0
+        var end = array.size-1
+        var mid: Int
+        while(start<=end){
+            mid = start + (end-start)/2
+            if(array[mid] == k) return mid
+            else if((array[start]<=k) && (array[mid]>k)){
+                end = mid-1
+            }
+            else{
+                start = mid+1
+            }
+        }
+        return -1
+    }
 }
