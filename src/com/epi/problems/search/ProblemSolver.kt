@@ -12,12 +12,14 @@ object ProblemSolver{
         var result = -1
         while(left <= right){
             var mid = left+((right-left)/2)
-            if(array[mid] == k) {
-                result = mid
-                right = mid -1
+            when {
+                array[mid] == k -> {
+                    result = mid
+                    right = mid -1
+                }
+                array[mid] < k -> left = mid+1
+                else -> right = mid-1
             }
-            else if(array[mid] < k) left = mid+1
-            else right = mid-1
         }
         return result
     }
@@ -131,11 +133,15 @@ object ProblemSolver{
         while(start<=end){
             mid = start + (end-start)/2
             if(array[mid] == k) return mid
-            else if((array[start]<=k) && (array[mid]>k)){
-                end = mid-1
+            else if(array[start] <= array[mid]){
+                if((array[start] <= k) && (k < array[mid])) end = mid-1
+                else start = mid+1
+            }
+            else if((k > array[mid]) && (k <= array[end])){
+                start = mid+1
             }
             else{
-                start = mid+1
+                end = mid-1
             }
         }
         return -1
