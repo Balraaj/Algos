@@ -7,6 +7,11 @@ import java.util.Set;
 
 public class ProblemSolver {
 
+    public static void temp(){
+        String str = "Hello";
+        str.contains("a");
+    }
+
     /**
      * EPI: 14.1: Given two sorted arrays, return a new array
      * which contains all the elements that exist in both the arrays.
