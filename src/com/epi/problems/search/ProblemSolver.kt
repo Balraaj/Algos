@@ -146,44 +146,4 @@ object ProblemSolver{
         }
         return -1
     }
-
-    fun convertBase(number: String, base1: Int, base2: Int) : String{
-        var signed = number[0] == '-' || number[0] == '+'
-        var negative = signed && number[0] == '-'
-
-        var startIndex = if(signed) 1 else 0
-        var base10Number = 0
-
-        for(i in startIndex until(number.length)){
-            var digit = getDigitFromChar(number[i])
-            base10Number = (base10Number * base1) + digit
-        }
-
-        var result = StringBuilder()
-        while(base10Number > 0){
-            var char = getCharFromDigit(base10Number % base2)
-            result.append(char)
-            base10Number/=base2
-        }
-        if(negative) result.append('-')
-        return result.reverse().toString()
-    }
-
-    private fun getDigitFromChar(char: Char): Int{
-        var intValue = char.toInt()
-        return when(intValue){
-            in 48..57 -> intValue - 48
-            in 65..70 -> intValue - 55
-            else -> throw NumberFormatException("Out of range")
-        }
-    }
-
-    private fun getCharFromDigit(value: Int): Char{
-        return when(value){
-            in 0..9 -> (48 + value).toChar()
-            in 10..15 -> (55 + value).toChar()
-            else -> throw NumberFormatException("Out of range")
-        }
-    }
-
 }
