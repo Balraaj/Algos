@@ -2,7 +2,12 @@ package com.epi.problems.revision
 
 
 fun main(){
-myloop@    for(a in 'A'..'Z'){
+}
+
+
+
+fun columnTest(){
+    myloop@    for(a in 'A'..'Z'){
         for (b in 'A'..'Z'){
             for(c in 'A'..'Z'){
                 var columnNameOR = "$a$b$c"
@@ -16,6 +21,8 @@ myloop@    for(a in 'A'..'Z'){
             }
         }
     }
-
     print("\nSuccess")
 }
+
+
+
