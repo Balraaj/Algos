@@ -61,4 +61,37 @@ object ProblemSolver{
         return lcm
     }
 
+    /**
+     * Divisible sum problem
+     */
+    fun divisibleSumPairs(n: Int, k: Int, ar: Array<Int>): Int {
+        var map = HashMap<Int, Int>()
+        var result = 0
+        for(value in ar){
+            var currentKey = value % k
+            var matchkey = if(currentKey == 0) 0 else k - currentKey
+            if(map.containsKey(matchkey)){
+                result += map[matchkey]!!
+            }
+            var currentKeyValue = map[currentKey] ?: 0
+            map[currentKey] = ++currentKeyValue
+        }
+        return result
+    }
+
+    /**
+     * Divisible Sum pairs with array instead of map
+     */
+    fun divisibleSumPairsFast(n: Int, k: Int, ar: Array<Int>): Int {
+        var map = IntArray(k){0}
+        var result = 0
+        for(value in ar){
+            var currentKey = value % k
+            var matchkey = if(currentKey == 0) 0 else k - currentKey
+            result += map[matchkey]
+            map[currentKey]++
+        }
+        return result
+    }
+
 }
