@@ -136,4 +136,21 @@ object ProblemSolver{
         if(sum == b) print("Bon Appetit")
         else print(b - sum)
     }
+
+    // 10 20 20 10 10 30 50 10 20
+    fun sockMerchant(n: Int, ar: Array<Int>): Int {
+        var socks = IntArray(101){0}
+        var canSell = 0
+        for(sock in ar){
+            if(socks[sock] == 1) canSell++
+            socks[sock] = (socks[sock] + 1) % 2
+        }
+        return canSell
+    }
+
+    fun pageCount(n: Int, p: Int): Int {
+        var fromStart = p/2
+        var fromEnd = n/2 - fromStart
+        return if(fromStart< fromEnd) fromStart else fromEnd
+    }
 }
