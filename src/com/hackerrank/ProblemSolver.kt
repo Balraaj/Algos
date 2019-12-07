@@ -1,5 +1,7 @@
 package com.hackerrank
 
+import kotlin.math.max
+
 object ProblemSolver{
 
     /**
@@ -94,4 +96,31 @@ object ProblemSolver{
         return result
     }
 
+    fun migratoryBirds(arr: Array<Int>): Int {
+        var bird = IntArray(6)
+        for(value in arr){
+            bird[value]++
+        }
+        var maxType = 0
+        for(i in 1 until arr.size){
+            if(arr[i] > arr[maxType]){
+                maxType = i
+            }
+        }
+        return maxType
+    }
+
+    fun dayOfProgrammer(year: Int): String {
+        if(year == 1918) return "26.09.1918"
+        if(year <= 1917){
+            if(year % 4 == 0) return "12.09.$year"
+            else return "13.09.$year"
+        }
+        else if( (year % 400 == 0) || ((year % 4 == 0) && (year %100 !=0))){
+            return "12.09.$year"
+        }
+        else{
+            return "13.09.$year"
+        }
+    }
 }
