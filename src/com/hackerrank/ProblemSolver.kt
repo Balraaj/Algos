@@ -123,4 +123,17 @@ object ProblemSolver{
             return "13.09.$year"
         }
     }
+
+    /**
+     * Hacker rank problem Bon Appetit
+     */
+    fun bonAppetit(bill: Array<Int>, k: Int, b: Int): Unit {
+        var sum = 0
+        for(i in bill.indices){
+            if(i != k) sum+=bill[i]
+        }
+        sum/=2
+        if(sum == b) print("Bon Appetit")
+        else print(b - sum)
+    }
 }
