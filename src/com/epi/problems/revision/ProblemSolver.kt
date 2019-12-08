@@ -77,4 +77,23 @@ object ProblemSolver{
         return (n1 * n2) / gcd
     }
 
+    fun reverseAllWords(str: String): String{
+        var str = str.reversed()
+        var result = StringBuilder()
+        var word = StringBuilder()
+        var index = 0
+        while(index < str.length){
+            word.clear()
+            while((index < str.length) && (Character.isSpaceChar(str[index]))){
+                index++
+            }
+            while((index < str.length) && (!Character.isSpaceChar(str[index]))){
+                word.append(str[index])
+            }
+            result.append(word).append(" ")
+        }
+        return result.toString()
+    }
+
+
 }

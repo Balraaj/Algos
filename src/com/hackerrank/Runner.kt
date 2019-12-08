@@ -1,6 +1,12 @@
 package com.hackerrank
 
 fun main(){
-    var arr = arrayOf(1,2,3,4,5,4,3,2,1,3,4)
-    ProblemSolver.migratoryBirds(arr)
+    // 100 100 50 40 40 20 10
+    //
+    //4
+    //
+    //5 25 50 120
+    var scores = arrayOf(100, 100, 50, 40, 40, 20, 10)
+    var alice = arrayOf(5, 25, 50, 120)
+    ProblemSolver.climbingLeaderboard(scores, alice)
 }

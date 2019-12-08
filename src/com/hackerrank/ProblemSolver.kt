@@ -153,4 +153,86 @@ object ProblemSolver{
         var fromEnd = n/2 - fromStart
         return if(fromStart< fromEnd) fromStart else fromEnd
     }
+
+    fun countingValleys(n: Int, s: String): Int {
+        val SEA_LEVEL = 0
+        var currentLevel = 0
+        var valleys = 0
+        for(c in s){
+            if((currentLevel == SEA_LEVEL) && (c == 'D')){
+                valleys++
+            }
+            currentLevel = if(c == 'U') currentLevel+1 else currentLevel-1
+        }
+        return valleys
+    }
+
+    /** Hacker rank problem Electronics shop */
+    fun getMoneySpent(keyboards: Array<Int>, drives: Array<Int>, b: Int): Int {
+        drives.sort()
+        var moneySpent = -1
+        for(keyboard in keyboards){
+            var i = search(drives, b-keyboard)
+            var t = drives[i] + keyboard
+            if((t>moneySpent) && (t<=b)){
+                moneySpent = t
+            }
+        }
+        return moneySpent
+    }
+
+    private fun search(arr: Array<Int>, value: Int): Int{
+        if(value < arr[0]) return 0
+        if(value > arr[arr.size-1]) return arr.size-1
+
+        var low = 0
+        var high = arr.size -1
+        var mid = 0
+        while(low <= high){
+            mid = (low + high)/2
+            if(arr[mid] == value) return mid
+            else if(arr[mid] > value) high = mid-1
+            else low = mid+1
+        }
+        return high
+    }
+
+    /**
+     * Hacker rank problem: Climbing the leader board
+     */
+    fun climbingLeaderboard(scores: Array<Int>, alice: Array<Int>): Array<Int> {
+        var result = Array<Int>(alice.size){0}
+        var scoresEnd = shred(scores)
+        for(i in alice.indices){
+            result[i] = getRank(scores, scoresEnd, alice[i])
+        }
+        return result
+    }
+
+    // 100 100 50 40 40 20 10
+    private fun shred(ar: Array<Int>): Int{
+        var i = 0
+        for(index in 1 until ar.size){
+            if(ar[index] != ar[i]){
+                ar[++i] = ar[index]
+            }
+        }
+        return i
+    }
+
+    private fun getRank(ar: Array<Int>, endIndex: Int, value: Int): Int{
+        if(value > ar[0]) return 1
+        if(value < ar[endIndex]) return endIndex+1
+
+        var low = 0
+        var high = endIndex
+        var mid = 0
+        while(low <= high){
+            mid = (low + high)/2
+            if(ar[mid] == value) return mid+1
+            else if(ar[mid] > value) low = mid+1
+            else high = mid-1
+        }
+        return high+2
+    }
 }
