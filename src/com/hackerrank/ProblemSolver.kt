@@ -209,7 +209,23 @@ object ProblemSolver{
         return result
     }
 
-    // 100 100 50 40 40 20 10
+    /**
+     *  Hacker rank problem: Climbing the leader board
+     *  This solution takes into consideration the fact
+     *  that alice's scores are in ascending order
+     */
+    fun climbingLeaderboardModified(scores: Array<Int>, alice: Array<Int>): Array<Int> {
+        var end = shred(scores)
+        var rank: Int
+        var result = Array<Int>(alice.size){0}
+        for(i in alice.indices){
+            while((end >=0) && (scores[end] <= alice[i])) end--
+            result[i] = end + 2
+        }
+        return result
+    }
+
+
     private fun shred(ar: Array<Int>): Int{
         var i = 0
         for(index in 1 until ar.size){
