@@ -1,5 +1,7 @@
+@file:JvmName("MyProblemSolver")
 package com.hackerrank
 
+import kotlin.math.abs
 import kotlin.math.max
 
 object ProblemSolver{
@@ -251,4 +253,20 @@ object ProblemSolver{
         }
         return high+2
     }
+
+    fun catAndMouse(x: Int, y: Int, z: Int): String {
+        return if((x==y) || (abs(z-x) == abs(z-y))){
+            "Mouse C"
+        }
+        else if(abs(z-x) < abs(z-y)){
+            "Cat A"
+        }
+        else{
+            "Cat B"
+        }
+    }
+}
+
+fun myFun():String{
+    return ""
 }

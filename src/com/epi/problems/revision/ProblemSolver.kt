@@ -54,16 +54,10 @@ object ProblemSolver{
         var index = index
         var result = StringBuilder()
         while(index > 0){
-            var reminder = index % 26
-            var char = 'Z'
-            if(reminder == 0){
-                index = index / 26 -1
-            }
-            else{
-                char = (64+reminder).toChar()
-                index /= 26
-            }
+            var remainder = index % 26
+            var char = if(remainder == 0) 'Z' else ('A'.toInt() + remainder -1).toChar()
             result.append(char)
+            index = (index - 1) /26
         }
         return result.reverse().toString()
     }

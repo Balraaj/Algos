@@ -2,6 +2,7 @@ package com.epi.problems.revision
 
 
 fun main(){
+    columnTest()
 }
 
 
